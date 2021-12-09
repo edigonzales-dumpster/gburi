@@ -67,12 +67,20 @@ public class gburi {
                         Element paragraph = doc.select("p.eigentum").first();
                         Element outerSpan = paragraph.select("span.statR").first();
                         Element innerSpan = paragraph.select("span.fett").first();
+                        System.out.println(innerSpan);
                         for (TextNode node : innerSpan.textNodes()) {
                             csvPrinter.printRecord(gbNr, bfsNr, node.text() + ", " + outerSpan.ownText());
                         }
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
-                    } 
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                        System.err.println(e.getMessage());
+                        System.err.println(request.uri());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     i++;
                     if (i>1000) {
                         break;
