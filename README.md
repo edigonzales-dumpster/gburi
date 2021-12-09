@@ -16,6 +16,8 @@ sdk i jbang 0.83.1
 jbang gburi.java
 ```
 
+Adjust file paths.
+
 ## Develop
 
 ```
